@@ -8,12 +8,12 @@ Gem::Specification.new do |gem|
   gem.version       = Slackedit::VERSION
   gem.authors       = ["psyomn"]
   gem.email         = ["lethaljellybean@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{slackedit is the game-data editor for slack}
+  gem.summary       = %q{Use this game editor in order to make games and share with your friends as cartridges!}
+  gem.homepage      = "http://github.com/psyomn/slackedit.git"
 
   gem.files         = `git ls-files`.split($/)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.executables   << "slackedit"
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 end

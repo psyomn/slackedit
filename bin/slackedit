@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby 
+
+require 'slackedit/version.rb'
+
+puts "Slackedit version: #{Slackedit::VERSION}"
