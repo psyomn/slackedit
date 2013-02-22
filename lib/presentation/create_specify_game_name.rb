@@ -5,7 +5,8 @@ class CreateSpecifyGameName < Qt::Dialog
   slots 'accept()'
   slots 'reject()'
 
-  def initialize
+  def initialize(parent=nil)
+    super()
     @game_name_label = Qt::Label.new(tr("Game Name:"))
     @game_name_ledit = Qt::LineEdit.new
     @button_accept   = Qt::PushButton.new(tr("Accept"))

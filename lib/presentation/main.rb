@@ -1,6 +1,6 @@
 require 'Qt4'
 
-require_relative 'presentation/create_specify_game_name.rb'
+require 'presentation/create_specify_game_name.rb'
 
 # Author :: Simon Symeonidis
 # License :: GPL v3.0
@@ -29,11 +29,13 @@ class Main < Qt::Dialog
 private
 
   def clicked_create()
-    
+    self.hide
+    CreateSpecifyGameName.new(self).exec
+    self.show
   end
 
+  # TODO 
   def clicked_load()
-  puts "Clicked load"
   end
 
 end
