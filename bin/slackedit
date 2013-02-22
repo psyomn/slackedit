@@ -4,5 +4,7 @@ require 'slackedit/version.rb'
 require 'slackeditor.rb'
 
 puts "Slackedit version: #{Slackedit::VERSION}"
+app = Qt::Application.new(ARGV)
 SlackEditor.new
+app.exec
 
