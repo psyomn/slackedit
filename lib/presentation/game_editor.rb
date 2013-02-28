@@ -6,7 +6,8 @@ require 'Qt4'
 class GameEditor < Qt::Dialog
 
   def initialize(parent=nil)
-    super
+    super(parent)
+    puts @game_name
     setWindowTitle(@game_name)
   end
 

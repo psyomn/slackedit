@@ -2,18 +2,20 @@ require 'presentation/game_editor.rb'
 
 # Author :: Simon Symeonidis
 # License :: GPL v3.0
+# Tiny dialog to get name of game before proceeding to the editor
+# TODO: Going to make this generic in the future (if needed)
 class CreateSpecifyGameName < Qt::Dialog
   slots 'accept()'
   slots 'reject()'
 
   def initialize(parent=nil)
-    super()
+    super(parent)
     @game_name_label = Qt::Label.new(tr("Game Name:"))
     @game_name_ledit = Qt::LineEdit.new
     @button_accept   = Qt::PushButton.new(tr("Accept"))
     @button_reject   = Qt::PushButton.new(tr("Reject"))
     @button_layout   = Qt::GridLayout.new
-    vbox = Qt::VBoxLayout.new()
+    vbox             = Qt::VBoxLayout.new()
 
     vbox.addWidget(@game_name_label)
     vbox.addWidget(@game_name_ledit)
