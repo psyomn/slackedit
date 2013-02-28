@@ -3,6 +3,7 @@ require 'Qt4'
 
 # Editor widgets go here
 require 'presentation/widgets/entity_widget.rb'
+require 'presentation/widgets/room_widget.rb'
 
 # Author :: Simon Symeonidis
 # Licence :: GPL v3.0
@@ -33,6 +34,7 @@ private
   def make_tabs
     @tabs = Qt::TabWidget.new
     @tabs.addTab(EntityWidget.new, "Entities")
+    @tabs.addTab(RoomWidget.new, "Room Editor")
   end
   
   attr :tabs
