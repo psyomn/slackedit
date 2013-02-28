@@ -12,10 +12,14 @@ class GameEditor < Qt::Dialog
   # Default initialization 
   def initialize(parent=nil,game_name)
     super(parent)
+
+    init_widgets
+
     @game_name = game_name
     vbox       = Qt::VBoxLayout.new()
     vbox.addWidget(@tabs)
 
+    setLayout(vbox)
     setWindowTitle("#{@game_name} | #{Slackedit::NAME}-#{Slackedit::VERSION}")
   end
 
@@ -23,7 +27,7 @@ private
 
   # Init the required widgets
   def init_widgets
-    self.make_tabs
+    make_tabs
   end
 
   def make_tabs
