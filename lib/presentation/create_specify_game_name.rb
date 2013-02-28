@@ -8,6 +8,7 @@ class CreateSpecifyGameName < Qt::Dialog
   slots 'accept()'
   slots 'reject()'
 
+  # Default initialization 
   def initialize(parent=nil)
     super(parent)
     @game_name_label = Qt::Label.new(tr("Game Name:"))
@@ -27,15 +28,13 @@ class CreateSpecifyGameName < Qt::Dialog
     connect(@button_accept, SIGNAL('clicked()'), self, SLOT('accept()'))
     connect(@button_reject, SIGNAL('clicked()'), self, SLOT('reject()'))
 
-    setWindowTitle("Specify game name")
+    setWindowTitle(tr("Specify game name"))
   end
-
 
 private
 
   def accept()
-    ged = GameEditor.new(self)
-    ged.game_name = @game_name_ledit.text
+    ged = GameEditor.new(self, @game_name_ledit.text())
     self.hide
     ged.exec
   end
