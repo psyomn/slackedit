@@ -1,6 +1,7 @@
+require 'presentation/game_editor.rb'
+
 # Author :: Simon Symeonidis
 # License :: GPL v3.0
-
 class CreateSpecifyGameName < Qt::Dialog
   slots 'accept()'
   slots 'reject()'
@@ -21,6 +22,8 @@ class CreateSpecifyGameName < Qt::Dialog
     vbox.addLayout(@button_layout)
 
     setLayout(vbox)
+    connect(@button_accept, SIGNAL('clicked()'), self, SLOT('accept()'))
+    connect(@button_reject, SIGNAL('clicked()'), self, SLOT('reject()'))
 
     setWindowTitle("Specify game name")
   end
@@ -28,7 +31,11 @@ class CreateSpecifyGameName < Qt::Dialog
 
 private
 
-  def accept(game_name)
+  def accept()
+    ged = GameEditor.new(self)
+    ged.game_name = @game_name_ledit.text
+    self.hide
+    ged.exec
   end
 
   def reject()
