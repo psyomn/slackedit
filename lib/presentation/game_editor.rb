@@ -32,7 +32,7 @@ private
 
   def make_tabs
     @tabs = Qt::TabWidget.new
-    @tabs.addTab(EntityWidget.new, "Test 1")
+    @tabs.addTab(EntityWidget.new, "Entities")
   end
   
   attr :tabs

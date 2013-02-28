@@ -3,6 +3,9 @@ require 'Qt4'
 # Author :: Simon Symeonidis 
 # The entity widget for the game editor. This is loaded and accessed as a tab
 # along with all the other uis.
+#
+# TODO: this should have a list at a side of current entities, and the ui used
+# to either edit the selected entity, or save a new one.
 class EntityWidget < Qt::Widget
 
   # TODO Status missing (to set a status to the player eg. poisoned, sleep etc)
@@ -31,7 +34,11 @@ private
     @defense_label = Qt::Label.new(tr("Defense"))
     @unused_skillpoints_ledit = Qt::LineEdit.new
     @unused_skillpoints_label = Qt::Label.new(tr("Unused Skillpoints"))
+    @all_items_listview       = Qt::ListView.new
+    @add_button = Qt::PushButton.new(tr("Add"))
     gbox        = Qt::GridLayout.new
+    vbox        = Qt::VBoxLayout.new
+    hbox        = Qt::HBoxLayout.new
 
     gbox.addWidget(@name_label, 0, 0)
     gbox.addWidget(@name_ledit, 0, 1)
@@ -50,7 +57,13 @@ private
     gbox.addWidget(@unused_skillpoints_label, 7, 0)
     gbox.addWidget(@unused_skillpoints_ledit, 7, 1)
 
-    setLayout(gbox)
+    vbox.addLayout(gbox)
+    vbox.addWidget(@add_button)
+
+    hbox.addWidget(@all_items_listview)
+    hbox.addLayout(vbox)
+
+    setLayout(hbox)
   end
 
 end
