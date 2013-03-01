@@ -1,4 +1,5 @@
 require 'Qt4'
+require 'domain/commands/create_entity_command.rb'
 
 # Author :: Simon Symeonidis 
 # The entity widget for the game editor. This is loaded and accessed as a tab
@@ -7,6 +8,7 @@ require 'Qt4'
 # TODO: this should have a list at a side of current entities, and the ui used
 # to either edit the selected entity, or save a new one.
 class EntityWidget < Qt::Widget
+  slots 'add_entity()' 
 
   # TODO Status missing (to set a status to the player eg. poisoned, sleep etc)
   # Default init, make ui
@@ -45,6 +47,8 @@ private
 
     @id_ledit.setEnabled(false)
 
+    connect(@add_button, SIGNAL('clicked()'), self, SLOT('add_entity()'))
+
     gbox.addWidget(@id_label, 0, 0)
     gbox.addWidget(@id_ledit, 0, 1)
     gbox.addWidget(@name_label, 1, 0)
@@ -72,6 +76,30 @@ private
     hbox.addLayout(vbox)
 
     setLayout(hbox)
+  end
+
+private
+
+  def add_entity()
+    cec = CreateEntityCommand.new(@id_ledit.text(), @name_ledit.text(), 
+      @max_hitpoints_ledit.text(), @max_magic_power_ledit.text(), 
+      @strength_ledit.text(), @stamina_ledit.text(), @agility_ledit.text(), 
+      @defense_ledit.text(), @unused_skillpoints_ledit.text())
+    cec.execute
+    clear
+  end
+
+  # Once you add an entity you probably want to clear stuff.
+  def clear
+    @id_ledit.text("")
+    @name_ledit.text("")
+    @max_hitpoints_ledit.text("")
+    @max_magic_power_ledit.text("")
+    @strength_ledit.text("")
+    @stamina_ledit.text("")
+    @agility_ledit.text("")
+    @defense_ledit.text("")
+    @unused_skillpoints_ledit.text("")
   end
 
 end

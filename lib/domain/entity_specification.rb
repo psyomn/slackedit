@@ -1,6 +1,6 @@
 # Author :: Simon Symeonidis
 # Organic specification (data factory for entities in game)
-class OrganicSpecification
+class EntitySpecification
   
   attr_accessor :id
 
