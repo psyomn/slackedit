@@ -2,6 +2,7 @@ require 'slackedit/version.rb'
 require 'Qt4'
 
 # Editor widgets go here
+require 'domain/cartridge_manager.rb'
 require 'presentation/widgets/entity_widget.rb'
 require 'presentation/widgets/room_widget.rb'
 require 'presentation/widgets/item_widget.rb'
@@ -12,12 +13,12 @@ require 'presentation/widgets/item_widget.rb'
 class GameEditor < Qt::Dialog
 
   # Default initialization 
-  def initialize(parent=nil,game_name)
+  def initialize(parent=nil)
     super(parent)
 
     init_widgets
 
-    @game_name = game_name
+    @game_name = CartridgeManager.instance.game_name
     vbox       = Qt::VBoxLayout.new()
     vbox.addWidget(@tabs)
 

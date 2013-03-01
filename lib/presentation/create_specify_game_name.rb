@@ -1,4 +1,5 @@
 require 'presentation/game_editor.rb'
+require 'domain/cartridge_manager.rb'
 
 # Author :: Simon Symeonidis
 # License :: GPL v3.0
@@ -14,7 +15,7 @@ class CreateSpecifyGameName < Qt::Dialog
     @game_name_label = Qt::Label.new(tr("Game Name:"))
     @game_name_ledit = Qt::LineEdit.new
     @button_accept   = Qt::PushButton.new(tr("Accept"))
-    @button_reject   = Qt::PushButton.new(tr("Reject"))
+    @button_reject   = Qt::PushButton.new(tr("Cancel"))
     @button_layout   = Qt::GridLayout.new
     vbox             = Qt::VBoxLayout.new()
 
@@ -34,12 +35,14 @@ class CreateSpecifyGameName < Qt::Dialog
 private
 
   def accept()
-    ged = GameEditor.new(self, @game_name_ledit.text())
+    CartridgeManager.instance.game_name = @game_name_ledit.text()
+    ged = GameEditor.new(self)
     self.hide
     ged.exec
   end
 
   def reject()
+    self.hide
   end
 
 end
