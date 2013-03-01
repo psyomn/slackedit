@@ -5,6 +5,10 @@ require 'Qt4'
 class RoomWidget < Qt::Widget
   def initialize
     super
+    @room_id_ledit = Qt::LineEdit.new
+    @room_id_label = Qt::Label.new(tr("ID"))
+    @room_name = Qt::LineEdit.new
+    @room_label = Qt::Label.new(tr("Room Name"))
     @room_gridview = Qt::TableWidget.new
     @entity_list = Qt::ListView.new
     @link_button = Qt::PushButton.new(tr("Link Entity"))
@@ -14,14 +18,16 @@ class RoomWidget < Qt::Widget
     right_vbox = Qt::VBoxLayout.new
     hbox_all = Qt::HBoxLayout.new
     hbox_buttons = Qt::HBoxLayout.new
-    
-    p left_vbox
-    p right_vbox
-    p hbox_all
-    p hbox_buttons
+    hbox_top_labels = Qt::HBoxLayout.new
+
+    @room_id_ledit.setEnabled(false)
+
+    hbox_top_labels.addWidget(@room_id_label)
+    hbox_top_labels.addWidget(@room_id_ledit)
     
     hbox_buttons.addWidget(@wall_button)
     hbox_buttons.addWidget(@entity_button)
+    left_vbox.addLayout(hbox_top_labels)
     left_vbox.addWidget(@room_gridview)
     left_vbox.addLayout(hbox_buttons)
     right_vbox.addWidget(@entity_list)

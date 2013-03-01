@@ -17,10 +17,12 @@ class ItemWidget < Qt::Widget
     @name_ledit = Qt::LineEdit.new
     @description_label = Qt::Label.new(tr("Item Description"))
     @description_ledit = Qt::LineEdit.new
-    @gp_value_label = Qt::Label.new(tr("Gold Points"))
+    @gp_value_label = Qt::Label.new(tr("GP Worth"))
     @gp_value_ledit = Qt::LineEdit.new
     @key_item_checkbox = Qt::Label.new(tr("Key Item"))
     @key_item_checkbox = Qt::CheckBox.new
+
+    @id_ledit.setEnabled(false)
 
     gbox.addWidget(@id_label, 0, 0)
     gbox.addWidget(@id_ledit, 0, 1) 
