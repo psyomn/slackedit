@@ -1,4 +1,4 @@
-require 'domain/entity.rb'
+require 'domain/entity_specification.rb'
 require 'domain/entity_mapper.rb'
 # Author :: Simon Symeonidis 
 # This is the command that 1. is initialized when
