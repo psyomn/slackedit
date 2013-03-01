@@ -18,8 +18,8 @@ class DbRegistry
   end
 
   # Execute SQL queries with this method
-  def execute(sql)
-    @handle.execute(sql)
+  def execute(*sql)
+    @handle.execute(*sql)
   end
 
   attr :handle, :db_name
