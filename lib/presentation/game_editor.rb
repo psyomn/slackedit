@@ -35,6 +35,7 @@ private
     @tabs = Qt::TabWidget.new
     @tabs.addTab(EntityWidget.new, "Entities")
     @tabs.addTab(RoomWidget.new, "Room Editor")
+    @tabs.addTab(ItemWidget.new, "Item Specifications")
   end
   
   attr :tabs
