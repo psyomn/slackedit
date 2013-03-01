@@ -21,6 +21,8 @@ class ItemWidget < Qt::Widget
     @gp_value_ledit = Qt::LineEdit.new
     @key_item_checkbox = Qt::Label.new(tr("Key Item"))
     @key_item_checkbox = Qt::CheckBox.new
+    @add_button = Qt::PushButton.new(tr("Add"))
+    @remove_button = Qt::PushButton.new(tr("Remove"))
 
     @id_ledit.setEnabled(false)
 
@@ -32,6 +34,8 @@ class ItemWidget < Qt::Widget
     gbox.addWidget(@description_ledit, 2, 1)
     gbox.addWidget(@gp_value_label, 3, 0)
     gbox.addWidget(@gp_value_ledit, 3, 1)
+    gbox.addWidget(@add_button, 4, 0)
+    gbox.addWidget(@remove_button, 4, 1)
 
     vbox.addWidget(@items_label)
     vbox.addWidget(@items_listview)

@@ -12,7 +12,9 @@ class DbRegistry
 
   # Create the db handle
   def initialize
-    @handle = SQLite3::Database.new(CartridgeManager.instance.game_name)
+    @handle = SQLite3::Database.new(
+      CartridgeManager.instance.game_name ||\
+      CartridgeManager.instance.absolute_file_path)
   end
 
   # Execute SQL queries with this method

@@ -35,9 +35,13 @@ class CreateSpecifyGameName < Qt::Dialog
 
 private
 
+  # TODO add guards here to makes sure that filenames make sense
+  # (no symbols, no whitespaces etc)
   def accept()
-    CartridgeManager.instance.game_name = @game_name_ledit.text()
-    TableManager.make_new_cartridge(@game_name_ledit.text())
+    game_name = @game_name_ledit.text
+    game_name += ".cart" if game_name.match(/\.cart$/).nil?
+    CartridgeManager.instance.game_name = game_name
+    TableManager.make_new_cartridge(game_name) 
     ged = GameEditor.new(self)
     self.hide
     ged.exec

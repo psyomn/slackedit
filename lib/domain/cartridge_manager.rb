@@ -6,6 +6,7 @@ class CartridgeManager
   include Singleton
 
   attr_accessor :game_name
+  attr_accessor :absolute_file_path
   attr_accessor :game_description
   attr_accessor :authors
 end
