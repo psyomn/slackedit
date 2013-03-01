@@ -36,6 +36,7 @@ private
     @unused_skillpoints_label = Qt::Label.new(tr("Unused Skillpoints"))
     @all_items_listview       = Qt::ListView.new
     @add_button = Qt::PushButton.new(tr("Add"))
+    @remove_button = Qt::PushButton.new(tr("Remove Selected"))
     gbox        = Qt::GridLayout.new
     vbox        = Qt::VBoxLayout.new
     hbox        = Qt::HBoxLayout.new
@@ -59,6 +60,7 @@ private
 
     vbox.addLayout(gbox)
     vbox.addWidget(@add_button)
+    vbox.addWidget(@remove_button)
 
     hbox.addWidget(@all_items_listview)
     hbox.addLayout(vbox)

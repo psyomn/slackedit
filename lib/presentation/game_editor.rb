@@ -4,6 +4,7 @@ require 'Qt4'
 # Editor widgets go here
 require 'presentation/widgets/entity_widget.rb'
 require 'presentation/widgets/room_widget.rb'
+require 'presentation/widgets/item_widget.rb'
 
 # Author :: Simon Symeonidis
 # Licence :: GPL v3.0
