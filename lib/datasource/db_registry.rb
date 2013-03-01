@@ -9,8 +9,9 @@ class DbRegistry
   include Singleton
 
   # Create the db handle
-  def initialize
-    @handle = SQLite3::Database.new(ARGV[0] || "game.cart")
+  def initialize(game_name)
+    @handle = SQLite3::Database.new(game_name)
+    @db_name = game_name
   end
 
   # Execute SQL queries with this method
@@ -18,7 +19,7 @@ class DbRegistry
     @handle.execute(sql)
   end
 
-  attr :handle
+  attr :handle, :db_name
 
 end
 
