@@ -5,8 +5,8 @@ require 'singleton'
 class CartridgeManager
   include Singleton
 
-  attr :game_name
-  attr :game_description
-  attr :authors
+  attr_accessor :game_name
+  attr_accessor :game_description
+  attr_accessor :authors
 end
 

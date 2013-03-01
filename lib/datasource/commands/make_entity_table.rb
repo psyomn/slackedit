@@ -1,4 +1,4 @@
-require 'persistence/db_registry.rb'
+require 'datasource/db_registry.rb'
 # Author :: Simon Symeonidis
 # Make the entity table
 class MakeEntityTable

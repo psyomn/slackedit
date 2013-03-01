@@ -1,5 +1,6 @@
 require 'presentation/game_editor.rb'
 require 'domain/cartridge_manager.rb'
+require 'datasource/table_manager.rb'
 
 # Author :: Simon Symeonidis
 # License :: GPL v3.0
@@ -36,6 +37,7 @@ private
 
   def accept()
     CartridgeManager.instance.game_name = @game_name_ledit.text()
+    TableManager.make_new_cartridge(@game_name_ledit.text())
     ged = GameEditor.new(self)
     self.hide
     ged.exec
