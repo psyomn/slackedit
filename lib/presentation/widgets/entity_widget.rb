@@ -115,7 +115,7 @@ private
 
   # TODO
   def poppulate_list_on_init
-    EntityMapper.findAll.each do |entity|
+    EntityMapper.find_all.each do |entity|
     end
   end
 
