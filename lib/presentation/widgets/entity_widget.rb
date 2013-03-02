@@ -103,6 +103,7 @@ private
   def clear
     @id_ledit.text= "" 
     @name_ledit.text= "" 
+    @current_hitpoints_ledit.text= ""
     @max_hitpoints_ledit.text= "" 
     @max_magic_power_ledit.text= "" 
     @strength_ledit.text= "" 
