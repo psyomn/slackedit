@@ -16,20 +16,22 @@ class InfoWidget < Qt::Widget
     grid = Qt::GridLayout.new
     pos = -1
     l, r = 0, 1
-    connect(@button_save_info, SIGNAL('clicked()'), self, SLOT("clicked_save"))
+    connect(@button_save_info, SIGNAL('clicked()'), 
+            self, SLOT("clicked_save()"))
 
     grid.addWidget(@game_name_label, pos+=1, l)
     grid.addWidget(@game_name_ledit, pos, r)
     grid.addWidget(@game_info_label, pos+=1, l)
     grid.addWidget(@game_info_ledit, pos, r)
     grid.addWidget(@game_authors_label, pos+=1, l)
-    grid.addWidget(@game_authors_ledit, pos, r)
+    grid.addWidget(@game_authors_tedit, pos, r)
     grid.addWidget(@button_save_info, pos+=1, l)
     setLayout(grid)
   end
 
 private
 
+  # TODO
   # User has chosen to save the game info
   def clicked_save()
   end
