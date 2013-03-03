@@ -98,8 +98,6 @@ private
       @defense_ledit.text(), @unused_skillpoints_ledit.text(),
       @current_hitpoints_ledit.text())
     cec.execute
-    list_item = Qt::StandardItem.new(@name_ledit.text())
-    @list_model.appendRow(list_item)
     clear
   end
 

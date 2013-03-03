@@ -5,6 +5,10 @@ require 'domain/cartridge_manager.rb'
 # This is the command that 1. is initialized when
 # we want to create a new entity, 2. delegates data insert to a gateway 
 # database. 
+#
+# Responsible for:
+#   * Persisting the entity
+#   * Updating the model in memory
 class CreateEntityCommand
   
   # Initialize the data

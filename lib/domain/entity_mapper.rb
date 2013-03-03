@@ -4,15 +4,17 @@ require 'datasource/db_registry.rb'
 # datasource layer, as suggested by larman. Maybe in the future this could
 # be separated along with a TDG to obtain more abstraction (though thinking
 # about this I don't see a point)
-
 class EntityMapper
 
   def self.insert(entity)
-    ret = DbRegistry.instance.execute(@@insert,
+    DbRegistry.instance.execute(@@insert,
       entity.name, entity.max_hitpoints, entity.max_magic_power,
       entity.strength, entity.stamina, entity.agility, entity.defense,
       entity.unused_skillpoints, entity.current_hitpoints)
-    p ret 
+    entity.id = \
+      DbRegistry.instance
+                .execute("SELECT last_insert_rowid()")
+                .flatten[0]
   end
 
   def self.update()

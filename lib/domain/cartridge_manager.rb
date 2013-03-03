@@ -13,12 +13,11 @@ class CartridgeManager
   def initialize
     @info = Info.new
     @entities = Qt::StandardItemModel.new
-    @entities.appendRow(Qt::StandardItem.new("HERP DERP"))
   end
 
   def add_entity(entity)
     item = Qt::StandardItem.new("#{entity.id}, #{entity.name}")
-    p @entities
+    @entities.appendRow(item)
   end
 
   # The filename of the game. Includes extension. (eg game.cart)
