@@ -1,4 +1,5 @@
 require 'Qt4'
+require 'domain/cartridge_manager.rb'
 require 'domain/commands/create_entity_command.rb'
 require 'domain/entity_mapper.rb'
 
@@ -11,15 +12,10 @@ require 'domain/entity_mapper.rb'
 class EntityWidget < Qt::Widget
   slots 'add_entity()' 
 
-  # This is the data model for the list of entities
-  # (QStandardItemModel)
-  attr_accessor :list_model 
-
   # TODO Status missing (to set a status to the player eg. poisoned, sleep etc)
   # Default init, make ui
   def initialize
     super
-    @list_model = Qt::StandardItemModel.new
     make_ui
   end
 
@@ -54,7 +50,7 @@ private
     hbox = Qt::HBoxLayout.new
 
     @id_ledit.setEnabled(false)
-    @all_items_listview.setModel(@list_model)
+    @all_items_listview.setModel(CartridgeManager.instance.entities)
 
     connect(@add_button, SIGNAL('clicked()'), self, SLOT('add_entity()'))
 

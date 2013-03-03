@@ -8,10 +8,11 @@ require 'datasource/db_registry.rb'
 class EntityMapper
 
   def self.insert(entity)
-    DbRegistry.instance.execute(@@insert,
+    ret = DbRegistry.instance.execute(@@insert,
       entity.name, entity.max_hitpoints, entity.max_magic_power,
       entity.strength, entity.stamina, entity.agility, entity.defense,
       entity.unused_skillpoints, entity.current_hitpoints)
+    p ret 
   end
 
   def self.update()

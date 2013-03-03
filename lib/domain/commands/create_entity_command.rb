@@ -1,5 +1,6 @@
 require 'domain/entity_specification.rb'
 require 'domain/entity_mapper.rb'
+require 'domain/cartridge_manager.rb'
 # Author :: Simon Symeonidis 
 # This is the command that 1. is initialized when
 # we want to create a new entity, 2. delegates data insert to a gateway 
@@ -24,6 +25,7 @@ class CreateEntityCommand
   # Run the command (and create the entity)
   def execute
     EntityMapper.insert(@entity)
+    CartridgeManager.instance.add_entity(@entity)
   end
 
   attr :entity
