@@ -11,10 +11,15 @@ require 'domain/entity_mapper.rb'
 class EntityWidget < Qt::Widget
   slots 'add_entity()' 
 
+  # This is the data model for the list of entities
+  # (QStandardItemModel)
+  attr_accessor :list_model 
+
   # TODO Status missing (to set a status to the player eg. poisoned, sleep etc)
   # Default init, make ui
   def initialize
     super
+    @list_model = Qt::StandardItemModel.new
     make_ui
   end
 
@@ -49,6 +54,7 @@ private
     hbox = Qt::HBoxLayout.new
 
     @id_ledit.setEnabled(false)
+    @all_items_listview.setModel(@list_model)
 
     connect(@add_button, SIGNAL('clicked()'), self, SLOT('add_entity()'))
 
@@ -96,6 +102,8 @@ private
       @defense_ledit.text(), @unused_skillpoints_ledit.text(),
       @current_hitpoints_ledit.text())
     cec.execute
+    list_item = Qt::StandardItem.new(@name_ledit.text())
+    @list_model.appendRow(list_item)
     clear
   end
 
@@ -116,6 +124,8 @@ private
   # TODO
   def poppulate_list_on_init
     EntityMapper.find_all.each do |entity|
+      list_item = Qt::StandardItem.new(entity.name)
+      @list_model.appendRow(list_item)
     end
   end
 

@@ -16,4 +16,5 @@ Gem::Specification.new do |gem|
   gem.executables   << "slackedit"
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+  #gem.add_dependency([['sqlite3', ">= 1.3.7"], ['qtbindings', ">= 4.8.3.0 "]])
 end
