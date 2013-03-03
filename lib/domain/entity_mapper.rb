@@ -12,9 +12,9 @@ class EntityMapper
       entity.strength, entity.stamina, entity.agility, entity.defense,
       entity.unused_skillpoints, entity.current_hitpoints)
     entity.id = \
-      DbRegistry.instance
-                .execute("SELECT last_insert_rowid()")
-                .flatten[0]
+    DbRegistry.instance
+              .execute("SELECT last_insert_rowid()")
+              .flatten[0]
   end
 
   def self.update()
@@ -36,13 +36,14 @@ class EntityMapper
       entity.id = row[0]
       entity.current_hitpoints = row[1]
       entity.max_hitpoints = row[2]
-      entity.max_magic_power = row[3]
-      entity.strength = row[4]
-      entity.stamina = row[5]
-      entity.agility = row[6]
-      entity.defense = row[7]
-      entity.unused_skillpoints = row[8]
-      entity.name = row[9]
+      entity.current_magic_power = row[3]
+      entity.max_magic_power = row[4]
+      entity.strength = row[5]
+      entity.stamina = row[6]
+      entity.agility = row[7]
+      entity.defense = row[8]
+      entity.unused_skillpoints = row[9]
+      entity.name = row[10]
       entity_arr.push entity
     end
     entity_arr

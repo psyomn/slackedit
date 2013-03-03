@@ -10,6 +10,7 @@ class Main < Qt::Dialog
   slots 'create()'
   slots 'load()'
 
+  # Default; init ui
   def initialize(parent=nil)
     super()
     
@@ -26,22 +27,34 @@ class Main < Qt::Dialog
     setLayout(vbox)
   end
 
-  attr :button_create, :button_load
+  # Button to create a new game cartridge
+  attr_accessor :button_create
+  # Button to load an existing game catridge
+  attr_accessor :button_load
 
 private
 
+  # Create a new game database
   def create()
     self.hide
     CreateSpecifyGameName.new(self).exec
     self.show
   end
 
-  # TODO 
+  # Load a previously created game database
   def load()
-    abs_path = Qt::FileDialog.getOpenFileName(self, tr("Open Cartridge"),
-                                              "", tr("Files (*.cart)"))
-    CartridgeManager.instance.absolute_file_path = abs_path
+    abs_path = \
+    Qt::FileDialog.getOpenFileName(self, tr("Open Cartridge"),
+                                   "", tr("Files (*.cart)"))
+    # Init Resources 
+    CartridgeManager.instance.absolute_file_path = File.split(abs_path).first
     CartridgeManager.instance.game_name = File.basename(abs_path)
+    entities = EntityMapper.find_all
+    entities.each do |e|
+      CartridgeManager.instance.add_entity(e)
+    end
+
+    # Show the UI
     ged = GameEditor.new
     self.hide
     ged.exec

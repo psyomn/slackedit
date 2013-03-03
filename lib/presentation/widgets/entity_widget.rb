@@ -84,7 +84,6 @@ private
     hbox.addLayout(vbox)
 
     # set the initial data to the list 
-    poppulate_list_on_init
 
     setLayout(hbox)
   end
@@ -113,14 +112,6 @@ private
     @agility_ledit.text= "" 
     @defense_ledit.text= "" 
     @unused_skillpoints_ledit.text= "" 
-  end
-
-  # TODO
-  def poppulate_list_on_init
-    EntityMapper.find_all.each do |entity|
-      list_item = Qt::StandardItem.new(entity.name)
-      @list_model.appendRow(list_item)
-    end
   end
 
 end
