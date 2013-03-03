@@ -6,6 +6,7 @@ require 'domain/cartridge_manager.rb'
 require 'presentation/widgets/entity_widget.rb'
 require 'presentation/widgets/room_widget.rb'
 require 'presentation/widgets/item_widget.rb'
+require 'presentation/widgets/info_widget.rb'
 
 # Author :: Simon Symeonidis
 # Licence :: GPL v3.0
@@ -38,6 +39,7 @@ private
     @tabs.addTab(EntityWidget.new, "Entities")
     @tabs.addTab(RoomWidget.new, "Room Editor")
     @tabs.addTab(ItemWidget.new, "Item Specifications")
+    @tabs.addTab(InfoWidget.new, "Game Info")
   end
   
   attr :tabs

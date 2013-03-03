@@ -1,7 +1,7 @@
 require 'Qt4'
 
 class InfoWidget < Qt::Widget
-  slots("clicked_save")
+  slots("clicked_save()")
 
   def initialize
     super
@@ -31,7 +31,7 @@ class InfoWidget < Qt::Widget
 private
 
   # User has chosen to save the game info
-  def clicked_save
+  def clicked_save()
   end
 
 end
