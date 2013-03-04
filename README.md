@@ -18,7 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run with
+
+  slackedit
+
+and you will start up the interface for this gem. You need qt4, and sqlite3
+in order to run this.
 
 ## Contributing
 
