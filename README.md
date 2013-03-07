@@ -1,4 +1,4 @@
-# Slackedit
+# Slackedit [![Code Climate](https://codeclimate.com/github/psyomn/slackedit.png)](https://codeclimate.com/github/psyomn/slackedit)
 
 TODO: Write a gem description
 
