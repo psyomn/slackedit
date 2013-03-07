@@ -21,72 +21,18 @@ class EntityWidget < Qt::Widget
 
 private 
 
+  # This builds the UI
   def make_ui
-    @id_label = Qt::Label.new(tr("ID"))
-    @id_ledit = Qt::LineEdit.new
-    @name_label = Qt::Label.new(tr("Name"))
-    @name_ledit = Qt::LineEdit.new
-    @current_hitpoints_ledit = Qt::LineEdit.new
-    @current_hitpoints_label = Qt::Label.new(tr("Current hitpoints"))
-    @max_hitpoints_ledit = Qt::LineEdit.new
-    @max_hitpoints_label = Qt::Label.new(tr("Max hitpoints"))
-    @max_magic_power_ledit = Qt::LineEdit.new
-    @max_magic_power_label = Qt::Label.new(tr("Max Magic"))
-    @strength_ledit = Qt::LineEdit.new
-    @strength_label = Qt::Label.new(tr("Strength"))
-    @stamina_ledit = Qt::LineEdit.new
-    @stamina_label = Qt::Label.new(tr("Stamina"))
-    @agility_ledit = Qt::LineEdit.new
-    @agility_label = Qt::Label.new(tr("Agility"))
-    @defense_ledit = Qt::LineEdit.new
-    @defense_label = Qt::Label.new(tr("Defense"))
-    @unused_skillpoints_ledit = Qt::LineEdit.new
-    @unused_skillpoints_label = Qt::Label.new(tr("Unused Skillpoints"))
-    @all_items_tableview       = Qt::TableView.new
-    @add_button = Qt::PushButton.new(tr("Add"))
-    @remove_button = Qt::PushButton.new(tr("Remove Selected"))
-    gbox = Qt::GridLayout.new
-    vbox = Qt::VBoxLayout.new
-    hbox = Qt::HBoxLayout.new
+    assign_widgets
+    combine_widgets
 
+    # Set properties of widgets
     @id_ledit.setEnabled(false)
     @all_items_tableview.setModel(CartridgeManager.instance.entities)
     @all_items_tableview.verticalHeader().setVisible(false)
 
     connect(@add_button, SIGNAL('clicked()'), self, SLOT('add_entity()'))
-
-    # TODO change to ++variable because hardcoding numbers is fucking stupid
-    gbox.addWidget(@id_label, 0, 0)
-    gbox.addWidget(@id_ledit, 0, 1)
-    gbox.addWidget(@name_label, 1, 0)
-    gbox.addWidget(@name_ledit, 1, 1)
-    gbox.addWidget(@current_hitpoints_label, 2, 0)
-    gbox.addWidget(@current_hitpoints_ledit, 2, 1)
-    gbox.addWidget(@max_hitpoints_label, 3, 0)
-    gbox.addWidget(@max_hitpoints_ledit, 3, 1)
-    gbox.addWidget(@max_magic_power_label, 4, 0)
-    gbox.addWidget(@max_magic_power_ledit, 4, 1)
-    gbox.addWidget(@strength_label, 5, 0)
-    gbox.addWidget(@strength_ledit, 5, 1)
-    gbox.addWidget(@stamina_label, 6, 0)
-    gbox.addWidget(@stamina_ledit, 6, 1)
-    gbox.addWidget(@agility_label, 7, 0)
-    gbox.addWidget(@agility_ledit, 7, 1)
-    gbox.addWidget(@defense_label, 8, 0)
-    gbox.addWidget(@defense_ledit, 8, 1)
-    gbox.addWidget(@unused_skillpoints_label, 9, 0)
-    gbox.addWidget(@unused_skillpoints_ledit, 9, 1)
-
-    vbox.addLayout(gbox)
-    vbox.addWidget(@add_button)
-    vbox.addWidget(@remove_button)
-
-    hbox.addWidget(@all_items_tableview)
-    hbox.addLayout(vbox)
-
-    # set the initial data to the list 
-
-    setLayout(hbox)
+    setLayout(@hbox)
   end
 
 private
@@ -113,6 +59,72 @@ private
     @agility_ledit.text= "" 
     @defense_ledit.text= "" 
     @unused_skillpoints_ledit.text= "" 
+  end
+
+  # Create the widgets we'll be using
+  def assign_widgets
+    @id_label = Qt::Label.new(tr("ID"))
+    @id_ledit = Qt::LineEdit.new
+    @name_label = Qt::Label.new(tr("Name"))
+    @name_ledit = Qt::LineEdit.new
+    @current_hitpoints_ledit = Qt::LineEdit.new
+    @current_hitpoints_label = Qt::Label.new(tr("Current hitpoints"))
+    @max_hitpoints_ledit = Qt::LineEdit.new
+    @max_hitpoints_label = Qt::Label.new(tr("Max hitpoints"))
+    @max_magic_power_ledit = Qt::LineEdit.new
+    @max_magic_power_label = Qt::Label.new(tr("Max Magic"))
+    @strength_ledit = Qt::LineEdit.new
+    @strength_label = Qt::Label.new(tr("Strength"))
+    @stamina_ledit = Qt::LineEdit.new
+    @stamina_label = Qt::Label.new(tr("Stamina"))
+    @agility_ledit = Qt::LineEdit.new
+    @agility_label = Qt::Label.new(tr("Agility"))
+    @defense_ledit = Qt::LineEdit.new
+    @defense_label = Qt::Label.new(tr("Defense"))
+    @unused_skillpoints_ledit = Qt::LineEdit.new
+    @unused_skillpoints_label = Qt::Label.new(tr("Unused Skillpoints"))
+    @all_items_tableview = Qt::TableView.new
+    @add_button = Qt::PushButton.new(tr("Add"))
+    @remove_button = Qt::PushButton.new(tr("Remove Selected"))
+    @gbox = Qt::GridLayout.new
+    @vbox = Qt::VBoxLayout.new
+    @hbox = Qt::HBoxLayout.new
+  end
+
+  # Add widgets to the layouts (or layouts to layouts)
+  def combine_widgets
+    # TODO change to ++variable because hardcoding numbers is fucking stupid
+    @gbox.addWidget(@id_label, 0, 0)
+    @gbox.addWidget(@id_ledit, 0, 1)
+    @gbox.addWidget(@name_label, 1, 0)
+    @gbox.addWidget(@name_ledit, 1, 1)
+    @gbox.addWidget(@current_hitpoints_label, 2, 0)
+    @gbox.addWidget(@current_hitpoints_ledit, 2, 1)
+    @gbox.addWidget(@max_hitpoints_label, 3, 0)
+    @gbox.addWidget(@max_hitpoints_ledit, 3, 1)
+    @gbox.addWidget(@max_magic_power_label, 4, 0)
+    @gbox.addWidget(@max_magic_power_ledit, 4, 1)
+    @gbox.addWidget(@strength_label, 5, 0)
+    @gbox.addWidget(@strength_ledit, 5, 1)
+    @gbox.addWidget(@stamina_label, 6, 0)
+    @gbox.addWidget(@stamina_ledit, 6, 1)
+    @gbox.addWidget(@agility_label, 7, 0)
+    @gbox.addWidget(@agility_ledit, 7, 1)
+    @gbox.addWidget(@defense_label, 8, 0)
+    @gbox.addWidget(@defense_ledit, 8, 1)
+    @gbox.addWidget(@unused_skillpoints_label, 9, 0)
+    @gbox.addWidget(@unused_skillpoints_ledit, 9, 1)
+
+    @vbox.addLayout(@gbox)
+    @vbox.addWidget(@add_button)
+    @vbox.addWidget(@remove_button)
+
+    @hbox.addWidget(@all_items_tableview)
+    @hbox.addLayout(@vbox)
+
+    # set the initial data to the list 
+
+
   end
 
 end
