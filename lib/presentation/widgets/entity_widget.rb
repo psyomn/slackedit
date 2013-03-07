@@ -42,7 +42,7 @@ private
     @defense_label = Qt::Label.new(tr("Defense"))
     @unused_skillpoints_ledit = Qt::LineEdit.new
     @unused_skillpoints_label = Qt::Label.new(tr("Unused Skillpoints"))
-    @all_items_listview       = Qt::ListView.new
+    @all_items_tableview       = Qt::TableView.new
     @add_button = Qt::PushButton.new(tr("Add"))
     @remove_button = Qt::PushButton.new(tr("Remove Selected"))
     gbox = Qt::GridLayout.new
@@ -50,7 +50,8 @@ private
     hbox = Qt::HBoxLayout.new
 
     @id_ledit.setEnabled(false)
-    @all_items_listview.setModel(CartridgeManager.instance.entities)
+    @all_items_tableview.setModel(CartridgeManager.instance.entities)
+    @all_items_tableview.verticalHeader().setVisible(false)
 
     connect(@add_button, SIGNAL('clicked()'), self, SLOT('add_entity()'))
 
@@ -80,7 +81,7 @@ private
     vbox.addWidget(@add_button)
     vbox.addWidget(@remove_button)
 
-    hbox.addWidget(@all_items_listview)
+    hbox.addWidget(@all_items_tableview)
     hbox.addLayout(vbox)
 
     # set the initial data to the list 

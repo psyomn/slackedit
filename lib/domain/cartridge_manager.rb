@@ -13,11 +13,13 @@ class CartridgeManager
   def initialize
     @info = Info.new
     @entities = Qt::StandardItemModel.new
+    @entities.setHorizontalHeaderLabels(["id", "name"])
   end
 
   def add_entity(entity)
-    item = Qt::StandardItem.new("#{entity.id}, #{entity.name}")
-    @entities.appendRow(item)
+    id   = Qt::StandardItem.new("#{entity.id}")
+    name = Qt::StandardItem.new("#{entity.name}")
+    @entities.appendRow([id,name])
   end
 
   # The filename of the game. Includes extension. (eg game.cart)

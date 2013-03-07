@@ -7,10 +7,6 @@ require 'datasource/commands/make_info_table.rb'
 # The table manager which is responsible for creating and 
 # updating the schema of the currently opened game file.
 class TableManager
-
-  def self.run
-  end
-
   def self.make_new_cartridge(name)
     MakeEntityTable.now
     MakeItemSpecificationTable.now
