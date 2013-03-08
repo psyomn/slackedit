@@ -26,11 +26,6 @@ private
     assign_widgets
     combine_widgets
 
-    # Set properties of widgets
-    @id_ledit.setEnabled(false)
-    @all_items_tableview.setModel(CartridgeManager.instance.entities)
-    @all_items_tableview.verticalHeader().setVisible(false)
-
     connect(@add_button, SIGNAL('clicked()'), self, SLOT('add_entity()'))
     setLayout(@hbox)
   end
@@ -63,32 +58,46 @@ private
 
   # Create the widgets we'll be using
   def assign_widgets
+    make_labels
+    make_interactive_widgets
+
+    
+    # Set properties of widgets
+    @id_ledit.setEnabled(false)
+    @all_items_tableview.setModel(CartridgeManager.instance.entities)
+    @all_items_tableview.verticalHeader().setVisible(false)
+    @hbox = Qt::HBoxLayout.new
+  end
+
+  def make_labels
     @id_label = Qt::Label.new(tr("ID"))
-    @id_ledit = Qt::LineEdit.new
     @name_label = Qt::Label.new(tr("Name"))
-    @name_ledit = Qt::LineEdit.new
-    @current_hitpoints_ledit = Qt::LineEdit.new
     @current_hitpoints_label = Qt::Label.new(tr("Current hitpoints"))
-    @max_hitpoints_ledit = Qt::LineEdit.new
     @max_hitpoints_label = Qt::Label.new(tr("Max hitpoints"))
-    @max_magic_power_ledit = Qt::LineEdit.new
     @max_magic_power_label = Qt::Label.new(tr("Max Magic"))
-    @strength_ledit = Qt::LineEdit.new
     @strength_label = Qt::Label.new(tr("Strength"))
-    @stamina_ledit = Qt::LineEdit.new
     @stamina_label = Qt::Label.new(tr("Stamina"))
-    @agility_ledit = Qt::LineEdit.new
     @agility_label = Qt::Label.new(tr("Agility"))
-    @defense_ledit = Qt::LineEdit.new
     @defense_label = Qt::Label.new(tr("Defense"))
-    @unused_skillpoints_ledit = Qt::LineEdit.new
     @unused_skillpoints_label = Qt::Label.new(tr("Unused Skillpoints"))
     @all_items_tableview = Qt::TableView.new
     @add_button = Qt::PushButton.new(tr("Add"))
     @remove_button = Qt::PushButton.new(tr("Remove Selected"))
     @gbox = Qt::GridLayout.new
     @vbox = Qt::VBoxLayout.new
-    @hbox = Qt::HBoxLayout.new
+  end
+
+  def make_interactive_widgets
+    @id_ledit = Qt::LineEdit.new
+    @name_ledit = Qt::LineEdit.new
+    @current_hitpoints_ledit = Qt::LineEdit.new
+    @max_hitpoints_ledit = Qt::LineEdit.new
+    @max_magic_power_ledit = Qt::LineEdit.new
+    @strength_ledit = Qt::LineEdit.new
+    @stamina_ledit = Qt::LineEdit.new
+    @agility_ledit = Qt::LineEdit.new
+    @defense_ledit = Qt::LineEdit.new
+    @unused_skillpoints_ledit = Qt::LineEdit.new
   end
 
   # Add widgets to the layouts (or layouts to layouts)
