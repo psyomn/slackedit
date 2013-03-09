@@ -38,6 +38,8 @@ private
   def create()
     self.hide
     CreateSpecifyGameName.new(self).exec
+    # Done, clear the previous data
+    CartridgeManager.instance.clear
     self.show
   end
 
@@ -58,6 +60,8 @@ private
     ged = GameEditor.new
     self.hide
     ged.exec
+    # Done, clear the previous data
+    CartridgeManager.instance.clear
     self.show
   end
 

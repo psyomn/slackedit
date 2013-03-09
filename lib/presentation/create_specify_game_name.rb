@@ -32,9 +32,6 @@ private
     ged = GameEditor.new(self)
     self.hide
     ged.exec
-
-    # Game editor closing means we want to unload previous data
-    CartridgeManager.instance.clear
   end
 
   # Create the ui
