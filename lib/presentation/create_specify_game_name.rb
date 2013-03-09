@@ -28,28 +28,36 @@ private
     CartridgeManager.instance.game_name = game_name
     CartridgeManager.instance.absolute_file_path = @path_ledit.text
     TableManager.make_new_cartridge(game_name) 
+    
     ged = GameEditor.new(self)
     self.hide
     ged.exec
+
+    # Game editor closing means we want to unload previous data
+    CartridgeManager.instance.clear
   end
 
+  # Create the ui
   def make_ui
     make_widgets
+    make_widget_associations
   end
 
+  # Create the Qt UI objects
   def make_widgets
     @game_name_label = Qt::Label.new(tr("Game Name"))
     @game_name_ledit = Qt::LineEdit.new
-    @path_label      = Qt::Label.new(tr("Path"))
-    @path_ledit      = Qt::LineEdit.new
+    @path_label = Qt::Label.new(tr("Path"))
+    @path_ledit = Qt::LineEdit.new
     @choose_path_button = Qt::PushButton.new(tr("..."))
-    @button_accept   = Qt::PushButton.new(tr("Accept"))
-    @button_reject   = Qt::PushButton.new(tr("Cancel"))
-    @button_layout   = Qt::GridLayout.new
-    @vbox             = Qt::VBoxLayout.new
-    @hbox_for_path    = Qt::HBoxLayout.new
+    @button_accept = Qt::PushButton.new(tr("Accept"))
+    @button_reject = Qt::PushButton.new(tr("Cancel"))
+    @button_layout = Qt::GridLayout.new
+    @vbox = Qt::VBoxLayout.new
+    @hbox_for_path = Qt::HBoxLayout.new
   end
 
+  # Make the widget associations
   def make_widget_associations
     series = -1
     @path_ledit.setEnabled(false)
@@ -72,8 +80,7 @@ private
             self, SLOT('choose_path()'))
   end
 
-  # User doesn't want to do anything. Hide the menu, go back to main
-  # menu.  
+  # User doesn't want to do anything. Hide the menu, go back to main menu
   def reject()
     self.hide
   end

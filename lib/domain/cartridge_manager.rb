@@ -22,6 +22,16 @@ class CartridgeManager
     @entities.appendRow([id,name])
   end
 
+  # Clear the previous games' information
+  def clear
+    @game_name = nil
+    @absolute_file_path = nil
+    @game_description = nil
+    @authors = nil
+    @info = nil
+    @entities = nil
+  end
+
   # The filename of the game. Includes extension. (eg game.cart)
   # Don't confuse this with the IN-GAME name. This is here for 
   # tehcnical facilities, and general handling of filesystem.
