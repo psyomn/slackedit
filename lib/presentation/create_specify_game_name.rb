@@ -13,37 +13,7 @@ class CreateSpecifyGameName < Qt::Dialog
   # Default initialization 
   def initialize(parent=nil)
     super(parent)
-    @game_name_label = Qt::Label.new(tr("Game Name"))
-    @game_name_ledit = Qt::LineEdit.new
-    @path_label      = Qt::Label.new(tr("Path"))
-    @path_ledit      = Qt::LineEdit.new
-    @choose_path_button = Qt::PushButton.new(tr("..."))
-    @button_accept   = Qt::PushButton.new(tr("Accept"))
-    @button_reject   = Qt::PushButton.new(tr("Cancel"))
-    @button_layout   = Qt::GridLayout.new
-    vbox             = Qt::VBoxLayout.new
-    hbox_for_path    = Qt::HBoxLayout.new
-
-    series = -1
-    @path_ledit.setEnabled(false)
-    @path_ledit.text = "Choose Path" 
-
-    vbox.addWidget(@game_name_label)
-    vbox.addWidget(@game_name_ledit)
-    vbox.addWidget(@path_label)
-    hbox_for_path.addWidget(@path_ledit)
-    hbox_for_path.addWidget(@choose_path_button)
-    vbox.addLayout(hbox_for_path)
-
-    @button_layout.addWidget(@button_accept, series += 1, 0)
-    @button_layout.addWidget(@button_reject, series,  1)
-    vbox.addLayout(@button_layout)
-
-    setLayout(vbox)
-    connect(@button_accept, SIGNAL('clicked()'), self, SLOT('accept()'))
-    connect(@button_reject, SIGNAL('clicked()'), self, SLOT('reject()'))
-    connect(@choose_path_button, SIGNAL('clicked()'), 
-            self, SLOT('choose_path()'))
+    make_ui
 
     setWindowTitle(tr("Specify game name"))
   end
@@ -61,6 +31,45 @@ private
     ged = GameEditor.new(self)
     self.hide
     ged.exec
+  end
+
+  def make_ui
+    make_widgets
+  end
+
+  def make_widgets
+    @game_name_label = Qt::Label.new(tr("Game Name"))
+    @game_name_ledit = Qt::LineEdit.new
+    @path_label      = Qt::Label.new(tr("Path"))
+    @path_ledit      = Qt::LineEdit.new
+    @choose_path_button = Qt::PushButton.new(tr("..."))
+    @button_accept   = Qt::PushButton.new(tr("Accept"))
+    @button_reject   = Qt::PushButton.new(tr("Cancel"))
+    @button_layout   = Qt::GridLayout.new
+    @vbox             = Qt::VBoxLayout.new
+    @hbox_for_path    = Qt::HBoxLayout.new
+  end
+
+  def make_widget_associations
+    series = -1
+    @path_ledit.setEnabled(false)
+    @path_ledit.text = "Choose Path" 
+
+    @vbox.addWidget(@game_name_label)
+    @vbox.addWidget(@game_name_ledit)
+    @vbox.addWidget(@path_label)
+    @hbox_for_path.addWidget(@path_ledit)
+    @hbox_for_path.addWidget(@choose_path_button)
+    @vbox.addLayout(@hbox_for_path)
+    @button_layout.addWidget(@button_accept, series += 1, 0)
+    @button_layout.addWidget(@button_reject, series,  1)
+    @vbox.addLayout(@button_layout)
+
+    setLayout(@vbox)
+    connect(@button_accept, SIGNAL('clicked()'), self, SLOT('accept()'))
+    connect(@button_reject, SIGNAL('clicked()'), self, SLOT('reject()'))
+    connect(@choose_path_button, SIGNAL('clicked()'), 
+            self, SLOT('choose_path()'))
   end
 
   # User doesn't want to do anything. Hide the menu, go back to main

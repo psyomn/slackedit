@@ -123,17 +123,11 @@ private
     @gbox.addWidget(@defense_ledit, 8, 1)
     @gbox.addWidget(@unused_skillpoints_label, 9, 0)
     @gbox.addWidget(@unused_skillpoints_ledit, 9, 1)
-
     @vbox.addLayout(@gbox)
     @vbox.addWidget(@add_button)
     @vbox.addWidget(@remove_button)
-
     @hbox.addWidget(@all_items_tableview)
     @hbox.addLayout(@vbox)
-
-    # set the initial data to the list 
-
-
   end
 
 end
