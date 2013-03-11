@@ -1,6 +1,11 @@
 # Slackedit [![Code Climate](https://codeclimate.com/github/psyomn/slackedit.png)](https://codeclimate.com/github/psyomn/slackedit)
 
-TODO: Write a gem description
+Slackedit is the game editor for the 'slack' gem. This is the generator / 
+editor for the data of possible games that may be interpreted by the slack gem
+/ game engine.
+
+This is mainly an experiment for me to learn about data driven game engines,
+and learn where I could apply this knowledge as well.
 
 ## Installation
 
@@ -20,12 +25,14 @@ Or install it yourself as:
 
 Run with
 
-  slackedit
+    $ slackedit
 
-and you will start up the interface for this gem. You need qt4, and sqlite3
-in order to run this.
+and you will start up the interface for this gem. You need qtbindings (as well
+as qt4), and sqlite3 in order to run this.
 
 ## Contributing
+
+Developers are always welcome.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
